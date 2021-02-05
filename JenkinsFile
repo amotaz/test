@@ -1,5 +1,6 @@
 node ('ubuntu'){  
     def app
+    
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
@@ -12,21 +13,21 @@ node ('ubuntu'){
     
     stage('Build-and-Tag') {
         sh 'echo Build-andTag'
-    /* This builds the actual image; synonymous to
-         * docker build on the command line */
-        app = docker.build("amangetoffmylawn/snake:latest")
+        app = docker.build("amangetoffmylawn/snake")
     }
+    
     stage('Post-to-dockerhub') {
-    sh 'echo Post-to-dockerhub'
-     docker.withRegistry('https://registry.hub.docker.com', 'training_creds') {
+        sh 'echo Post-to-dockerhub'
+        
+        docker.withRegistry('https://registry.hub.docker.com', 'training_creds') {
             app.push("latest")
         			} 
          }
+         
     stage('SECURITY-IMAGE-SCANNER'){
         sh 'echo SECURITY-IMAGE-SCANNER'
         //build 'SECURITY-IMAGE-SCANNER-AQUAMICROSCANNER'
-    }
-  
+    } 
     
     stage('Pull-image-server') {
     sh 'echo Pull-image-server'
