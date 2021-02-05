@@ -14,7 +14,7 @@ node ('ubuntu'){
     stage('Build-and-Tag') {
         sh 'echo Build-andTag'
         sh 'pwd'
-        app = docker.build("amangetoffmylawn/snake","./Multiplayer-Snake")
+        app = docker.build("amangetoffmylawn/snake")
     }
     
     stage('Post-to-dockerhub') {
