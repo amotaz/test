@@ -13,7 +13,7 @@ node ('ubuntu'){
     
     stage('Build-and-Tag') {
         sh 'echo Build-andTag'
-        app = docker.build("amangetoffmylawn/snake")
+        app = docker.build("amangetoffmylawn/snake","/home/aman/app-test/node-multiplayer-snake")
     }
     
     stage('Post-to-dockerhub') {
