@@ -13,7 +13,6 @@ node ('ubuntu'){
     
     stage('Build-and-Tag') {
         sh 'echo Build-andTag'
-        sh 'pwd'
         app = docker.build("amangetoffmylawn/snake")
     }
     
