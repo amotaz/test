@@ -14,13 +14,13 @@ node ('ubuntu'){
         sh 'echo Build-andTag'
     /* This builds the actual image; synonymous to
          * docker build on the command line */
-        //app = docker.build("amangetoffmylawn/snake")
+        app = docker.build("amangetoffmylawn/snake")
     }
     stage('Post-to-dockerhub') {
     sh 'echo Post-to-dockerhub'
-     /*docker.withRegistry('https://registry.hub.docker.com', 'training_creds') {
+     docker.withRegistry('https://registry.hub.docker.com', 'training_creds') {
             app.push("latest")
-        			} */
+        			} 
          }
     stage('SECURITY-IMAGE-SCANNER'){
         sh 'echo SECURITY-IMAGE-SCANNER'
@@ -30,8 +30,8 @@ node ('ubuntu'){
     
     stage('Pull-image-server') {
     sh 'echo Pull-image-server'
-        // sh "docker-compose down"
-         //sh "docker-compose up -d"	
+        sh "docker-compose down"
+         sh "docker-compose up -d"	
       }
     
     stage('DAST')
