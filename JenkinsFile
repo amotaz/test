@@ -7,7 +7,7 @@ node ('ubuntu'){
     }  
     stage('SAST'){
         sh 'echo SAST'
-        //build 'SECURITY-SAST-SNYK'
+        build 'SECURITY-SAST-SNYK'
         //cd ${WORKSPACE}
         //snyk test
     }
@@ -28,7 +28,7 @@ node ('ubuntu'){
          
     stage('SECURITY-IMAGE-SCANNER'){
         sh 'echo SECURITY-IMAGE-SCANNER'
-        //build 'SECURITY-IMAGE-SCANNER-AQUAMICROSCANNER'
+        build 'SECURITY-IMAGE-SCANNER-AQUAMICROSCANNER'
     } 
     
     stage('Pull-image-server') {
@@ -40,7 +40,7 @@ node ('ubuntu'){
     stage('DAST')
         {
         sh 'echo DAST'
-        //build 'SECURITY-DAST-OWASP_ZAP'
+        build 'SECURITY-DAST-OWASP_ZAP'
         }
  
 }
