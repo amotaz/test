@@ -7,7 +7,7 @@ node ('ubuntu'){
     }  
     stage('SAST'){
         sh 'echo SAST'
-        build 'SECURITY-SAST-SNYK'
+        //build 'SECURITY-SAST-SNYK'
         //cd ${WORKSPACE}
         //snyk test
     }
